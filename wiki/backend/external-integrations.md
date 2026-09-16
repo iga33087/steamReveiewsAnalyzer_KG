@@ -24,7 +24,7 @@ last_verified: 2026-09-16
 ## 資料處理細節
 
 - `Global.getAppId()` 從使用者輸入中擷取第一個連續數字；它接受 App ID 或含數字的 URL，但不驗證該遊戲是否存在。
-- Steam 評論會保留 `review`、`language`、`voted_up` 送入摘要；`timestamp_created` 只用於後續日期統計。
+- Steam 評論會保留 `review`、`language`，並將原始 `voted_up` 值以 `positives` 欄位名送入摘要；`timestamp_created` 只用於後續日期統計。
 - chunk 以每 10 筆評論分組、最多同時四個請求。最終階段把 chunk 回應中的 `message.content` 傳給具 JSON Schema format 的 Ollama 請求。
 - `refer=true` 時，系統尋找一筆 `mark: true` 的文件，僅將其 `report.summary` 作為最終提示中的文法／格式參考。
 

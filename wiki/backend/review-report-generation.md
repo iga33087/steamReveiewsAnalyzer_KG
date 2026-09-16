@@ -7,7 +7,6 @@ source_refs:
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Review.py
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Global.py
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Mongo.py
-  - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Global.py
 last_verified: 2026-09-16
 ---
 
@@ -26,7 +25,7 @@ last_verified: 2026-09-16
 
 ## 報告契約
 
-`GameReviewReport` 要求 `summary` 至少 500 字；`positive`／`negative` 均為非空清單，項目名稱長度 1–20、分數 0–100；`score` 包含故事、系統、音樂、創意、耐玩性、難度與整數平均值，各為 0–10。Prompt 也要求所有自然語言為繁體中文並僅根據評論內容。
+`GameReviewReport` 要求 `summary` 至少 500 字；`positive`／`negative` 為必填清單，但目前 Pydantic 欄位未設定最小清單長度；每個項目的名稱長度為 1–20、分數為 0–100。`score` 包含故事、系統、音樂、創意、耐玩性、難度與整數平均值，各為 0–10。Prompt 另要求 `positive`／`negative` 不得為空、所有自然語言使用繁體中文且僅根據評論內容；這項清單非空要求依賴模型遵循 prompt，而非 schema 強制驗證。
 
 ## 維護注意事項
 

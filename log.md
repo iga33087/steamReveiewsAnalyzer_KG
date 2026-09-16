@@ -16,3 +16,10 @@
 - 更新頁面：系統總覽、評論報告生成、前端應用流程、報告文件模型、HTTP API 契約與索引。
 - 取代的主張：既有系統總覽稱 `/api` 的反向代理或 Vite proxy 未顯示。`frontend@c8108ea:vite.config.ts` 已證實開發伺服器以 `:8080` 將 `/api` 代理至 `http://localhost:8000` 並移除前綴；已改為「production 部署設定待確認」。
 - 新發現／限制：評論抓取的首輪與最後一頁累積邊界、前端 Markdown 未 sanitization、空清單分頁可產生 page 0、ECharts listener 未清理，以及未使用的 `mongo_crud.py` 均已記錄。未執行服務、未連線 Steam／Ollama／MongoDB，故外部可用性、實際資料形狀與部署期行為仍待驗證。
+
+## [2026-09-16] lint | full LLM Wiki validation
+
+- Sources：`backend` main、HEAD `53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b`、clean；`frontend` main、HEAD `c8108ead15f68116705b3fa0e909a65aa52f7251`、clean。Raw Source 與外部程式碼均未修改。
+- 檢查 9 個 Wiki 頁：frontmatter、type／status、檔名、相對連結、索引覆蓋、入站連結與 source refs。全部相對連結與 source refs 均有效，沒有 orphan page 或重複頁。
+- 修正：移除 `評論報告生成` 中重複的 `lib/Global.py` source ref；更正 schema 對 `positive`／`negative` 未強制非空、以及摘要 payload 使用 `positives` 欄位名的描述。
+- 限制：`CLAUDE.md` 不存在，故無法依使用者指定閱讀；AGENTS.md 已是操作規範。尚未執行應用程式或連線外部服務；production 部署與執行期行為維持待確認。
