@@ -9,6 +9,7 @@ source_refs:
   - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/views/Report.tsx
   - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/views/ReportList.tsx
   - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/assets/js/api.tsx
+  - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/components/ChartBox.tsx
 last_verified: 2026-09-16
 ---
 
@@ -30,8 +31,10 @@ last_verified: 2026-09-16
 
 - `globalSlice` 僅維護 `loading: boolean`，主要 view 在 API 前後 dispatch `loadingChange`。
 - axios response interceptor 遇到 HTTP 錯誤會顯示 toast 並關閉 loading；一般 API 成功時由呼叫端自行關閉。
-- `Report` 假設 API 回傳的 `report.summary` 可以安全以 `markdown.toHTML()` 轉換並插入頁面。內容信任邊界與 sanitization 在本次來源中未見。
+- `Report` 假設 API 回傳的 `report.summary` 可以安全以 `markdown.toHTML()` 轉換並插入頁面。呈現資料、清單互動與 sanitization 邊界詳見[報告呈現與互動邊界](report-presentation.md)。
 
 ## 呈現的報告資料
 
 報告頁使用 `report.score` 六項分數繪製 radar、使用 `positive`／`negative` 建 treemap，並以 `countryObj`、`timeObj` 繪製正負評長條圖。完整 document 欄位見[報告文件模型](../data/report-document.md)。
+
+本機 `/api` 代理規則見[本機開發拓撲](../architecture/local-development-topology.md)。

@@ -30,3 +30,4 @@ last_verified: 2026-09-16
 - `GET /genReport` 會在 HTTP request 生命週期內完成 Steam、Ollama 與 MongoDB 工作，並非背景 job；大量 `size` 或 Ollama 延遲會直接延長請求。
 - `POST /report` 的 `name` 被轉為不跳脫的 regex pattern。此為現況行為；輸入處理與 regex 風險未經執行期測試。
 - API 目前未見認證、授權、CORS 或 rate limit 設定，不能據此推論部署層沒有這些保護。
+- Vite development server 已明確把 `/api` 代理到 FastAPI；production 前綴處理由部署層承擔仍屬待確認，詳見[本機開發拓撲](../architecture/local-development-topology.md)。

@@ -7,6 +7,7 @@ source_refs:
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Review.py
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Global.py
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Mongo.py
+  - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Global.py
 last_verified: 2026-09-16
 ---
 
@@ -29,6 +30,6 @@ last_verified: 2026-09-16
 
 ## 維護注意事項
 
-- `fetchReviews()` 先將上一輪 response 的 `reviews` 加進資料，再取得下一頁，因此首輪只累積空清單；這是現有流程的一部分，調整時須保留／重新驗證邊界行為。
+- `fetchReviews()` 先將上一輪 response 的 `reviews` 加進資料，再取得下一頁，因此首輪只累積空清單；而迴圈結束前最後取得的一頁不會加入 `self.data`。是否符合目標評論數的產品預期待確認，詳見[外部服務整合](external-integrations.md)。
 - `getData()` 以 `getTimeObj()` 的 key 順序建立 `timeRange`，假設資料至少一筆且 key 順序符合預期；空評論或 API 異常的行為未在本次執行期驗證。
-- `Global.mongoBase` 包含連線字串，維護時不應把真實密碼或環境祕密複製進 Wiki。設定與服務依賴的狀態見[系統總覽](../architecture/system-overview.md)。
+- `Global.mongoBase` 包含連線字串，維護時不應把真實密碼或環境祕密複製進 Wiki。設定與服務依賴的狀態見[外部服務整合](external-integrations.md)。

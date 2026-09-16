@@ -5,14 +5,17 @@
 ## Architecture
 
 - [系統總覽](wiki/architecture/system-overview.md) — 前端、FastAPI、Steam、Ollama 與 MongoDB 的主要資料流。
+- [本機開發拓撲](wiki/architecture/local-development-topology.md) — Vite `:8080` 如何將瀏覽器 `/api` 請求代理至 FastAPI `:8000`，以及部署期尚待確認的邊界。
 
 ## Backend
 
 - [評論報告生成](wiki/backend/review-report-generation.md) — `Review` 類別的抓取、分段摘要、結構化報告與儲存流程。
+- [外部服務整合](wiki/backend/external-integrations.md) — Steam、Ollama、MongoDB 的目前呼叫方式、資料用途與可維護風險。
 
 ## Frontend
 
 - [前端應用流程](wiki/frontend/application-flow.md) — React 路由、表單、報告清單與報告視圖如何呼叫 API。
+- [報告呈現與互動邊界](wiki/frontend/report-presentation.md) — 圖表欄位、搜尋／分頁／標記互動，以及 HTML 呈現信任邊界。
 
 ## Data
 

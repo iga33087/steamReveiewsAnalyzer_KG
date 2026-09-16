@@ -38,3 +38,5 @@ last_verified: 2026-09-16
 - `mark` 的唯一性由 `PUT /report/markup/{id}` 先把所有文件設 `false` 再設目標 `true`；在併發請求下不是單一原子操作。
 - `Mongo.find()` 將 `page`、`limit`、`sort` 從計數查詢移除，再以剩餘 query 計數／查找；呼叫端必須提供這三個欄位。
 - 尚未讀取實際資料庫文件，因此欄位完整度、索引與歷史資料相容性為待驗證。
+
+前端對欄位的具體圖表與列表消費方式見[報告呈現與互動邊界](../frontend/report-presentation.md)。

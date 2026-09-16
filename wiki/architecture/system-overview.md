@@ -7,6 +7,7 @@ source_refs:
   - backend@53da0590a9e6d0d29ee00bee4f963aa9b4ec3f7b:lib/Review.py
   - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/routes/index.tsx
   - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:src/assets/js/api.tsx
+  - frontend@c8108ead15f68116705b3fa0e909a65aa52f7251:vite.config.ts
 last_verified: 2026-09-16
 ---
 
@@ -35,10 +36,10 @@ FastAPI main.py ──► Steam Store / appreviews API
 
 ## 系統邊界
 
-- 前端 API client 的 base URL 是 `/api`；本次來源未顯示其反向代理或 Vite proxy 設定，因此 `/api` 如何對接 FastAPI 為待驗證事項。
-- 後端硬編碼 Steam、Ollama 與 MongoDB URL，詳見[評論報告生成](../backend/review-report-generation.md)。本次未進行外部服務連線測試。
+- 前端 API client 的 base URL 是 `/api`；Vite 開發伺服器會將其代理到 `http://localhost:8000` 並移除前綴，詳見[本機開發拓撲](local-development-topology.md)。部署期的代理設定仍待確認。
+- 後端整合 Steam、Ollama 與 MongoDB；端點、資料用途與已知行為詳見[外部服務整合](../backend/external-integrations.md)。本次未進行外部服務連線測試。
 
 ## 待確認
 
-- 開發與部署啟動命令、環境變數／反向代理設定未由 README 或設定檔提供。
+- 後端啟動命令與 production 部署設定未由 README 或設定檔提供。
 - `mongo_crud.py` 是通用 CRUD helper，但目前主要報告流程使用 `Mongo.py`；是否為遷移中的替代實作尚不可判定。
